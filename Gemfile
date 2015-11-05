@@ -26,6 +26,11 @@ gem 'pry-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# this is for creating charts in my app https://richonrails.com/articles/charting-with-chartkick
+gem 'chartkick' #http://chartkick.com/
+gem 'groupdate' #this is for the group by day stuff
+gem 'active_median'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
