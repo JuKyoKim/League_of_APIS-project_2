@@ -5,4 +5,5 @@
 <h3>List of Users made!</h3>
 <% @users.each do |user| %>
 <%= link_to "user#{user.id}: #{user.name}", user_path(user) %>
+<br>
 <% end %>

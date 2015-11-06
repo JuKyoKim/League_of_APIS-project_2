@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
-
-  get '/signup' => 'users#new'
+  root 'users#new' #I need to make sure when i path users when they sign out they go to root
 
   resources :users
 

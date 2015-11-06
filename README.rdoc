@@ -95,4 +95,14 @@ THIS SECTION IS ALL FOR TOM!
 
 
 
+get the database set up for the api returns
+display the data out - controller to view
+comparision of player to multiple
+-----------------------
+
+
+
+
+
+
 

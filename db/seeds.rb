@@ -1,1 +1,0 @@
-User.create name: 'tom', email: 'test@mailinator.com', password_digest: 'tom1234'

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-	skip_before_action :authenticate
-
+	include UserHelper
 
  	def index
  		@users = User.all
@@ -8,7 +7,9 @@ class UsersController < ApplicationController
 
  	def show
  		@user = User.find(params[:id])
- 	end
+ 		set_all_json(70029189)
+ 		@avg = pull_ward_avg(@array_of_json[1])
+	end
 
  	
  	def new
@@ -17,13 +18,13 @@ class UsersController < ApplicationController
 
  	def create
     user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
-      redirect_to '/'
-    else
-      redirect_to '/signup'
-    end
-  end
+    	if user.save
+    		session[:user_id] = user.id
+    		redirect_to user_path(user)
+    	else
+    		redirect_to new_user_path
+    	end
+  	end
 
  	
  	def edit
