@@ -31,6 +31,9 @@ gem 'chartkick' #http://chartkick.com/
 gem 'groupdate' #this is for the group by day stuff
 gem 'active_median'
 
+#rails heroku
+gem 'rails_12factor', group: :production
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
