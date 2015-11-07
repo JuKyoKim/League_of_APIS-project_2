@@ -8,19 +8,5 @@
 <br>
 <% end %>
 
-<% for api in @player do %>
-	<a href="<%= api %>"><%= api %></a>
-	<br>
-	<br>
-<% end %>
-<br>
-<p>==========================================</p>
-<br>
-<% for api in @div do %>
-	<a href="<%= api %>"><%= api %></a>
-	<br>
-	<br>
-<% end %>
-
-<p>AVG Wards placed by player: <%= @avg %></p>
-<p>AVG Wards placed by divison leaders: <%= @div_avg %></p>
+<p>AVG stats for player: <%= @avg %></p>
+<p>AVG stats by divison leaders: <%= @div_avg %></p>
