@@ -3,12 +3,15 @@ class UsersController < ApplicationController
 
  	def index
  		@users = User.all
+ 		@player = set_all_json("siranimay")
+ 		@avg = pull_ward_avg(@player[1])
+ 		
+ 		@div = set_all_json("siranimay")
+ 		@div_avg = pull_division_avg(@div[2])
  	end
 
  	def show
  		@user = User.find(params[:id])
- 		set_all_json(70029189)
- 		@avg = pull_ward_avg(@array_of_json[1])
 	end
 
  	

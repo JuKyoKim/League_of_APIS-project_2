@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#new' #I need to make sure when i path users when they sign out they go to root
+  root 'users#index' #I need to make sure when i path users when they sign out they go to root
 
   resources :users
 

@@ -7,3 +7,20 @@
 <%= link_to "user#{user.id}: #{user.name}", user_path(user) %>
 <br>
 <% end %>
+
+<% for api in @player do %>
+	<a href="<%= api %>"><%= api %></a>
+	<br>
+	<br>
+<% end %>
+<br>
+<p>==========================================</p>
+<br>
+<% for api in @div do %>
+	<a href="<%= api %>"><%= api %></a>
+	<br>
+	<br>
+<% end %>
+
+<p>AVG Wards placed by player: <%= @avg %></p>
+<p>AVG Wards placed by divison leaders: <%= @div_avg %></p>
