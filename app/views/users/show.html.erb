@@ -1,17 +1,17 @@
 <div>
 	<h1>Welcome <%= @user.summoner_name %>!</h1>
-	
-	<h3>User stats</h3>
-	<p><%= @user.ward_avg %></p>
-	<p><%= @user.gpm_avg %></p>
-	<p><%= @user.cpm_avg %></p>
-	<p><%= @user.kda_avg %></p>
-	<p><%= @user.kp_avg %></p>
+	<%= bar_chart ({
+		"user ward average" => @user.ward_avg,
+		"div ward average" => @div.ward_avg,
+		"user gold per minute average" => @user.gpm_avg,
+		"div gold per minute average" => @div.gpm_avg,
+		"user creeps per minute average" => @user.cpm_avg,
+		"div creeps per minute average" => @div.cpm_avg,
+		"user kda average" => @user.kda_avg,
+		"div kda average" => @div.kda_avg,
+		"user pill participation average" => @user.kp_avg,
+		"div pill participation average" => @div.kp_avg,
+		}),  id: "comparison-chart", min: 0, max: 500 %>
 
-	<h3><%= @div.division_name %> stats</h3>
-	<p><%= @div.ward_avg %></p>
-	<p><%= @div.gpm_avg %></p>
-	<p><%= @div.cpm_avg %></p>
-	<p><%= @div.kda_avg %></p>
-	<p><%= @div.kp_avg %></p>
 </div>
+
