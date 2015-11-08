@@ -126,7 +126,7 @@ module UserHelper
 	def pull_division_avg(hash)
 		#pass the divison_api first and then ONLY the @summoner_id
 		summoner_id = hash.first[0]
-		@division_name = hash[summoner_id][0]["tier"]
+		division_name = hash[summoner_id][0]["tier"]
 
 		ward_avg = 0
 		gpm_avg = 0
@@ -145,11 +145,12 @@ module UserHelper
 			killParticipation += div_avg["killParticipation"]
 		end
 
-		return { "ward_avg" => ward_avg/3,
-				  "gpm_avg" => gpm_avg/3,
-				  "cpm_avg" => cpm_avg/3,
-				  "kda_avg" => kda_avg/3,
-		"killParticipation" => killParticipation/3
+		return { "division_name" => division_name,
+					 "ward_avg" => ward_avg/3,
+					  "gpm_avg" => gpm_avg/3,
+					  "cpm_avg" => cpm_avg/3,
+					  "kda_avg" => kda_avg/3,
+			"killParticipation" => killParticipation/3
 		}
 	end
 

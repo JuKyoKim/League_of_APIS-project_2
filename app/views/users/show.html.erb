@@ -1,8 +1,17 @@
-<%= render 'layout' %>
-
 <div>
 	<h1>Welcome <%= @user.summoner_name %>!</h1>
-
 	
-</div>
+	<h3>User stats</h3>
+	<p><%= @user.ward_avg %></p>
+	<p><%= @user.gpm_avg %></p>
+	<p><%= @user.cpm_avg %></p>
+	<p><%= @user.kda_avg %></p>
+	<p><%= @user.kp_avg %></p>
 
+	<h3><%= @div.division_name %> stats</h3>
+	<p><%= @div.ward_avg %></p>
+	<p><%= @div.gpm_avg %></p>
+	<p><%= @div.cpm_avg %></p>
+	<p><%= @div.kda_avg %></p>
+	<p><%= @div.kp_avg %></p>
+</div>

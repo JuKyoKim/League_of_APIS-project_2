@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
  	def show
  		@user = User.find(params[:id])
- 		@player = set_all_hash(@user.summoner_name.gsub(/\s+/, ""))
- 		@avg = pull_hash_user_data(@player[1])
- 		@div_avg = pull_division_avg(@player[2])
+
+		@div = DivStat.find(params[:id])
+
 	end
 
  	
@@ -19,9 +19,27 @@ class UsersController < ApplicationController
 
  	def create
   		@user = User.new(user_params)
-  		puts @user
+  		@player = set_all_hash(@user.summoner_name.gsub(/\s+/, ""))
+ 		@avg = pull_hash_user_data(@player[1])
+ 		@div_avg = pull_division_avg(@player[2])
 
-  		if @user.save
+		@user.update({
+					:ward_avg => @avg["ward_avg"],
+					:gpm_avg => @avg["gpm_avg"],
+					:cpm_avg => @avg["cpm_avg"],
+					:kda_avg => @avg["kda_avg"],
+					:kp_avg => @avg["killParticipation"]})
+
+		@div = DivStat.new({
+			   :division_name => @div_avg["division_name"],
+					:ward_avg => @div_avg["ward_avg"],
+				     :gpm_avg => @div_avg["gpm_avg"],
+					 :cpm_avg => @div_avg["cpm_avg"],
+					 :kda_avg => @div_avg["kda_avg"],
+					  :kp_avg => @div_avg["killParticipation"]})
+		@div.save
+
+		if @user.save
   			redirect_to @user
   		end
   	end
@@ -29,8 +47,10 @@ class UsersController < ApplicationController
  	private
 
  	def user_params
- 		params.require(:user).permit(:summoner_name)
+ 		params.require(:user).permit(:summoner_name, :ward_avg, :gpm_avg, :cpm_avg, :kda_avg, :kp_avg)
  	end
  	
 
 end
+
+

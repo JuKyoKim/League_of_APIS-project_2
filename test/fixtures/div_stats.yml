@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  divison_name: MyString
+  ward_avg: 1.5
+  gpm_avg: 1.5
+  cpm_avg: 1.5
+  kda_avg: 1.5
+  kp_avg: 1.5
+
+two:
+  divison_name: MyString
+  ward_avg: 1.5
+  gpm_avg: 1.5
+  cpm_avg: 1.5
+  kda_avg: 1.5
+  kp_avg: 1.5

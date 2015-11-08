@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108034600) do
+ActiveRecord::Schema.define(version: 20151108183727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "game_histories", force: :cascade do |t|
-    t.integer  "summoner_id"
+  create_table "div_stats", force: :cascade do |t|
+    t.string   "division_name"
     t.float    "ward_avg"
     t.float    "gpm_avg"
     t.float    "cpm_avg"
     t.float    "kda_avg"
-    t.float    "kill_participation"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  create_table "game_histories_users", id: false, force: :cascade do |t|
-    t.integer "user_id",         null: false
-    t.integer "game_history_id", null: false
+    t.float    "kp_avg"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "summoner_name"
+    t.float    "ward_avg"
+    t.float    "gpm_avg"
+    t.float    "cpm_avg"
+    t.float    "kda_avg"
+    t.float    "kp_avg"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
