@@ -1,12 +1,7 @@
-<h1>index page for view</h1>
-<p>Find me in app/views/user/index.html.erb</p>
-<p>This will eventually be the admin control center</p>
+<%= render 'header' %>
 
-<h3>List of Users made!</h3>
-<% @users.each do |user| %>
-<%= link_to "user#{user.id}: #{user.name}", user_path(user) %>
-<br>
-<% end %>
+<div>
+	MAIN BODY
+</div>
 
-<p>AVG stats for player: <%= @avg %></p>
-<p>AVG stats by divison leaders: <%= @div_avg %></p>
+<%= render 'footer' %>

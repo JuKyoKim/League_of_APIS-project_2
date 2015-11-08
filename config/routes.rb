@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'users#index' #I need to make sure when i path users when they sign out they go to root
+  root 'users#new' #I need to make sure when i path users when they sign out they go to root
 
-  resources :users
+  resources :users, only:[:index, :show, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,13 +1,24 @@
 module UserHelper
 
-	# def valid_response_code(http)
-	# 	response = HTTParty.get(http)
-	# 	if response.code != 200
-	# 		puts "request is not returning 200 check again"
-	# 		return false
-	# 	end
-	# 		return true
-	# end
+	def valid_response_code(key)
+
+		if key.class == Fixnum
+			puts "changing api for id"
+			user_id_hash = HTTParty.get("https://na.api.pvp.net/api/lol/na/v1.4/summoner/#{key}?api_key=#{ENV["API_KEY"]}")
+			summoner_id = key
+		else
+			key = key.gsub(/\s+/, "")
+			puts "working api, no need to switch"
+			user_id_hash = HTTParty.get("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/#{key}?api_key=#{ENV["API_KEY"]}")
+			summoner_id = user_id_hash["#{key}"]["id"]
+		end
+
+		if user_id_hash.code != 200
+			puts "request is not returning 200 check again"
+			return false
+		end
+			return true
+	end
 
 	def avg(num_array)
 		return num_array.reduce(:+)/num_array.length
@@ -28,7 +39,6 @@ module UserHelper
 		divison_hash = HTTParty.get("https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}")
 		sleep 3
 
-		puts "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/#{summoner_id}/recent?api_key=#{ENV["API_KEY"]}"
 		return [user_id_hash, recent_match_hash, divison_hash]
 	end
 
@@ -50,10 +60,8 @@ module UserHelper
 			current_player_id = parse["championId"]
 			match_hash = HTTParty.get("https://na.api.pvp.net/api/lol/na/v2.2/match/#{match_key}?api_key=7a09121a-98eb-4998-8a13-2a387c052455")
 			sleep 1
-			if match_hash["matchType"] == "CUSTOM_GAME"
-				next
-			else
 
+			if match_hash["queueType"] == "NORMAL_5x5_BLIND" || match_hash["queueType"] == "RANKED_SOLO_5x5"
 				kill_total_match = 0
 				player_kills = 0
 				match_hash["participants"].each do |x|
@@ -70,7 +78,7 @@ module UserHelper
 						if deaths == 0
 							kda = player_kills
 						else
-							kda = player_kills/deaths
+							kda = player_kills.to_f/deaths.to_f
 						end
 						
 						gpm.push(player_gpm)
@@ -82,7 +90,6 @@ module UserHelper
 						puts "gpm is: "+player_gpm.to_s
 						puts "cpm is: "+player_cpm.to_s
 						puts "kda is: "+kda.to_s
-						puts "player_kills: "+player_kills.to_s
 	
 					end #end of current player conditional
 	
@@ -97,7 +104,9 @@ module UserHelper
 				kp_per_set.push(kp_in_match)
 				puts
 				puts
-				puts
+				puts	
+			else
+				next	
 			end #end of match
 
 		end
@@ -118,16 +127,30 @@ module UserHelper
 		#pass the divison_api first and then ONLY the @summoner_id
 		summoner_id = hash.first[0]
 		@division_name = hash[summoner_id][0]["tier"]
-		temp_arr = []
+
+		ward_avg = 0
+		gpm_avg = 0
+		cpm_avg = 0
+		kda_avg = 0
+		killParticipation = 0
+		
 		3.times do |x|
 			ind_sum = hash[summoner_id][0]["entries"][x]["playerOrTeamId"]
 			new_hash_set = set_all_hash(ind_sum.to_i)
-			avg = pull_hash_user_data(new_hash_set[1])
-			temp_arr.push(avg)
+			div_avg = pull_hash_user_data(new_hash_set[1])
+			ward_avg += div_avg["ward_avg"]
+			gpm_avg += div_avg["gpm_avg"]
+			cpm_avg += div_avg["cpm_avg"]
+			kda_avg += div_avg["kda_avg"]
+			killParticipation += div_avg["killParticipation"]
 		end
-		
-		return temp_arr
-		
+
+		return { "ward_avg" => ward_avg/3,
+				  "gpm_avg" => gpm_avg/3,
+				  "cpm_avg" => cpm_avg/3,
+				  "kda_avg" => kda_avg/3,
+		"killParticipation" => killParticipation/3
+		}
 	end
 
 end

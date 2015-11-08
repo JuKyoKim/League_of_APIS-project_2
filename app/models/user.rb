@@ -1,3 +1,4 @@
 class User < ActiveRecord::Base
-	has_secure_password
+	validates :summoner_name, presence: true, uniqueness: {case_sensitive: false}
+
 end
