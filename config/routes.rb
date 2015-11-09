@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
+  get '/terms', to: 'users#terms', as: 'terms'
   root 'users#new' #I need to make sure when i path users when they sign out they go to root
-
   resources :users, only:[:index, :show, :new, :create]
-
+  delete '/users/:id', to: 'users#destroy', as: 'destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

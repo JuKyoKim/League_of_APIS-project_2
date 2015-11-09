@@ -1,4 +1,4 @@
-<div class="main-body-container">
+<div class="main">
 	<h3>Welcome <%= @user.summoner_name %>!</h3>
 	<p>check out the chart below to see how you stack up agaisnt <br>
 	others in <%= @div.division_name %></p>
@@ -36,6 +36,6 @@
 		<% end %>	
 	</div>
 	
-	<%= button_to "Back to the main page", root_path , method: :get%>
+	<%= button_to "Back to the main page", destroy_path , method: :delete %>
 </div>
 

@@ -8,6 +8,7 @@ The Five Elements are as displayed below:
 - KILL PARTICIPATION/TEAM OBJ
 - GOLD PER MIN
 - KDA
+- CREEP PER MIN
 
 Those 5 datapoints essentially shows a player's behavior in game.
 	- High ward count usually means 2 things 
@@ -20,7 +21,6 @@ Those 5 datapoints essentially shows a player's behavior in game.
 		* how well the player plays the map based on time( objective control, how fast he can close games, etc...)
 	- Minion kill per min might be slightly redundant, but it does show you what the user does to compensate for gold loss per game(if a player is behind will he farm to compensate by farming or by CSing till he catches up)
 	- KDA is mainly to support the above theory
-
 
 roles and permissions - make the chart
 	USERS|  create_account  |  delete_account  |  view_all_acounts  |  view_app_data  
@@ -39,65 +39,17 @@ THIS SECTION IS ALL FOR TOM!
 *api call for finding out if summoner exist through id
 "https://na.api.pvp.net/api/lol/na/v1.4/summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
 
-	- returns the id
-	- returns the name
-	- returns the level
-	- returns the profile icon id
-	- koreandino id is - 21451224
-	- tinglyballs id is - 70029189
-
-
 * api call from last 10 games from player id 
 "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/#{summoner_id}/recent?api_key=#{ENV["API_KEY"]}"
-	- returns subType(normal or ranked)
-	- returns champion id of what i played
-	- returns the id of ppls I played with
-	- returns num of kills
-	- returns num of deaths
-	- returns num of gold earned in game
-	- returns if i won
-	- returns num of wards placed
 
 *api call for all possible recent ranked games extending to 2014 the oldest
 "https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
 
 * api call for total match history data
 "https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/#{summoner_id}/summary?season=#{season_param}&api_key=#{ENV["API_KEY"]}"
-	- returns total minion kills
 
 * api call for grabbing ppls in a specific division
 "https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
-	- grab the id's of all players with the divison string = I
-	- send that data over to last 10 matches and pull data regarding ward placement
-
-
-* collect data and display the type of champions the player likes to play
-	- in the last 10 games list all champions
-	- grab the global champion data and grab the tag per champion user played
-
-* collect kill participant data
-	- add assists and kills
-	- find percentage based on total amount of kills in game
-
-* collect wards placed per game
-
-* collect which games were won
-
-* collect minions killed per min
-	- need to collect total minions killed
-	- length of game and divide it per 10min
-
-
-
-
-
-
-
-
-get the database set up for the api returns
-display the data out - controller to view
-comparision of player to multiple
------------------------
 
 
 
