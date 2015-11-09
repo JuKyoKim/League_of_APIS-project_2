@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summoner_id: 
+  ward_avg: 1.5
+  gpm_avg: 1.5
+  cpm_avg: 1.5
+  kda_avg: 1.5
+  kill_participation: 1.5
+
+two:
+  summoner_id: 
+  ward_avg: 1.5
+  gpm_avg: 1.5
+  cpm_avg: 1.5
+  kda_avg: 1.5
+  kill_participation: 1.5

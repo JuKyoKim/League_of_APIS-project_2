@@ -1,0 +1,41 @@
+<div class="main">
+	<h3>Welcome <%= @user.summoner_name %>!</h3>
+	<p>check out the chart below to see how you stack up agaisnt <br>
+	others in <%= @div.division_name %></p>
+	<div class="chart-container">
+		<%= bar_chart ({
+		"user ward average" => @user.ward_avg,
+		"div ward average" => @div.ward_avg,
+		"user creeps per minute average" => @user.cpm_avg,
+		"div creeps per minute average" => @div.cpm_avg,
+		"user kda average" => @user.kda_avg,
+		"div kda average" => @div.kda_avg,
+		"user kill participation average" => @user.kp_avg,
+		"div kill participation average" => @div.kp_avg
+		}),  id: "comparison-chart", min: 0, max: 45 %>
+
+		<%= bar_chart ({
+			"user gold per minute average" => @user.gpm_avg,
+		"div gold per minute average" => @div.gpm_avg,}), min: 0,max: 500 %>
+	</div>
+	<div class="comment">
+		<% if @div.ward_avg > @user.ward_avg %>
+			<p>Try warding more often in games. Vision alone can create pressure around the map</p>
+		<% end %>
+		<% if @div.gpm_avg > @user.gpm_avg %>
+			<p>Gold per minute has many factors, but 1 consitent way of controlling/increasing gold flow is to plan out your game(objective controlling,CSing, etc...)</p>
+		<% end %>
+		<% if @div.cpm_avg > @user.cpm_avg %>
+			<p>The average CS per min is around 3-4 so its not a big deal. Late game tends to be slightly less focused on CSing so dont worry to much about it</p>
+		<% end %>
+		<% if @div.kda_avg > @user.kda_avg %>
+			<p>KDA does not determine how "Good" a player is, so don't worry about this too much</p>
+		<% end %>
+		<% if @div.kp_avg > @user.kp_avg %>
+			<p>solo kills and split pushing is great, but knowing how to control team fights for objective control is better!</p>
+		<% end %>	
+	</div>
+	
+	<%= button_to "Back to the main page", destroy_path , method: :delete %>
+</div>
+

@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+
+<div class="main" style="height:560px">
+	<p id="notice"><%= notice %></p>
+	<%= form_for @user do |f| %>
+		<br>
+		<%= f.label :summoner_name, "Enter your summoner name:" %>
+		<br>
+		<%= f.text_field :summoner_name %>
+		<br>
+		<%= f.submit "search"%>
+	<% end %>
+</div>

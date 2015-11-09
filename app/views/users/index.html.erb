@@ -1,0 +1,5 @@
+<div class="main">
+	<%= @users.each do |x| %>
+		<%= link_to "#{x.summoner_name}" , x , method: :get %>
+	<% end %>
+</div>

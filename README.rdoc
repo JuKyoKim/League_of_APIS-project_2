@@ -1,0 +1,59 @@
+== NOTES FROM TOM(README!)
+My Project Proposal:
+A web app based on the RIOT GAMES API, This app will display to the user the 5 key data points that will
+show them what they need to improve on based on averages collected in each ELO tier.
+
+The Five Elements are as displayed below:
+- WARDING
+- KILL PARTICIPATION/TEAM OBJ
+- GOLD PER MIN
+- KDA
+- CREEP PER MIN
+
+Those 5 datapoints essentially shows a player's behavior in game.
+	- High ward count usually means 2 things 
+		* The player is playing in the support or jungle role
+		* Has objective and team based actions in mind
+	- a 1:1 kill participation (which is slightly impossible) will show how much the player is involved in team based actions
+	- GOLD PER MIN shows several different things
+		* how well the user can control CS-ing over the course of the game
+		* impact of the player around the map(global gold, or even kills being made)
+		* how well the player plays the map based on time( objective control, how fast he can close games, etc...)
+	- Minion kill per min might be slightly redundant, but it does show you what the user does to compensate for gold loss per game(if a player is behind will he farm to compensate by farming or by CSing till he catches up)
+	- KDA is mainly to support the above theory
+
+roles and permissions - make the chart
+	USERS|  create_account  |  delete_account  |  view_all_acounts  |  view_app_data  
+	----------------------------------------------------------------------------------
+	guest|        X         |                  |                    |                 
+   member|                  |        X         |                    |         X       
+	admin|                  |        X         |          X         |         X       
+
+	
+
+THIS SECTION IS ALL FOR TOM!
+
+* api call for summoner name,id,level,icon
+"https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/#{summoner_name}?api_key=#{ENV["API_KEY"]}"
+
+*api call for finding out if summoner exist through id
+"https://na.api.pvp.net/api/lol/na/v1.4/summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
+
+* api call from last 10 games from player id 
+"https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/#{summoner_id}/recent?api_key=#{ENV["API_KEY"]}"
+
+*api call for all possible recent ranked games extending to 2014 the oldest
+"https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
+
+* api call for total match history data
+"https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/#{summoner_id}/summary?season=#{season_param}&api_key=#{ENV["API_KEY"]}"
+
+* api call for grabbing ppls in a specific division
+"https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/#{summoner_id}?api_key=#{ENV["API_KEY"]}"
+
+
+
+
+
+
+

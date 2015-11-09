@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project2</title>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<ul class="top-unordered">
+			<li><%= link_to "home", root_path %></li>
+			<li><a href="https://github.com/JuKyoKim/project_2">link to my github</a></li>
+		</ul>
+	</header>
+	<div class="main-container">
+		<%= yield %>
+	</div>
+	<footer>
+		<ul class="bottom-unordered">
+			<li>&copy; Tom-inc</li>
+			<li>made by Tom</li>
+			<%= link_to "terms and condition", "/terms" %>
+		</ul>
+	</footer>
+</body>
+</html>
