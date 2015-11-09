@@ -1,3 +1,5 @@
+[LINK TO THE APP THATS HOSTED!](https://calm-ridge-7609.herokuapp.com/)
+
 == NOTES FROM TOM(README!)
 My Project Proposal:
 A web app based on the RIOT GAMES API, This app will display to the user the 5 key data points that will
