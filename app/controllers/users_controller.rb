@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
  	def index
  		@users = User.all
+ 		@divs = DivStat.all
  	end
 
  	def show

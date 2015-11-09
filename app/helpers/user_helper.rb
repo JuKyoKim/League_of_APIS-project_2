@@ -67,14 +67,21 @@ module UserHelper
 				match_hash["participants"].each do |x|
 					if x["championId"] == current_player_id
 						player_gpm = x["timeline"]["goldPerMinDeltas"]["tenToTwenty"]
+						if player_gpm == nil
+							player_gpm = 0
+						end
 	
 						player_cpm = x["timeline"]["creepsPerMinDeltas"]["tenToTwenty"]
-						
+						if player_cpm == nil
+							player_cpm = 0
+						end
+
 						player_kills = x["stats"]["kills"] + x["stats"]["assists"]
-						
+						if player_gpm == nil
+							player_gpm = 0
+						end
+
 						deaths = x["stats"]["deaths"]
-	
-	
 						if deaths == 0
 							kda = player_kills
 						else
